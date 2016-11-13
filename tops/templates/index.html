@@ -6,10 +6,15 @@
   </head>
   <body>
     <p>
-      Olá Jaqueline!
+      Olá {{ me.first_name }} {{ me.last_name }},
     </p>
     <p>
-      Você é muito bestona, mas conseguiu se conectar. ;)
+      Estes são seus fãs:
     </p>
+    <ol>
+      {% for fan in fans %}
+      <li>{{ fan.first_name }} {{ fan.last_name }} - {{ fan.likes }}</li>
+      {% endfor %}
+    </ol>
   </body>
 </html>

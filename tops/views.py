@@ -1,6 +1,8 @@
+from collections import OrderedDict
+
 from django.shortcuts import render, redirect
 from fas_das_fotinhas.settings import DEBUG, CLIENT_ID, CLIENT_SECRET
-from fas_das_fotinhas.client import Client
+from fas_das_fotinhas.instagram import Client
 
 import requests
 
@@ -24,7 +26,29 @@ def auth_done(request):
     request.session['access_token'] = access_token
     return redirect('index')
 
+def logout(request):
+    request.session.pop('access_token')
+    client.revoke_access()
+    return redirect('auth')
+
 def index(request):
     if 'access_token' not in request.session:
         return redirect('auth')
-    return render(request, 'index.html')
+    me = client.get_me()
+    medias = client.get_recent_medias()
+    fans = {}
+    for media in medias:
+        likes = client.get_media_likes(media.get('id'))
+        for like in likes:
+            if like.get('username') not in fans:
+                fans['username'] = {
+                    'id': like.get('id'),
+                    'first_name': like.get('first_name'),
+                    'last_name': like.get('last_name'),
+                    'likes': 1
+                }
+            else:
+                fans['username']['likes'] += 1
+    sorted_fans = OrderedDict(sorted(fans.items(), 
+                                  key=lambda kv: kv[1]['likes'], reverse=True))
+    return render(request, 'index.html', {'me': me, 'fans' : sorted_fans})
