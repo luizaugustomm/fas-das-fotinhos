@@ -49,6 +49,6 @@ def index(request):
                 }
             else:
                 fans['username']['likes'] += 1
-    sorted_fans = OrderedDict(sorted(fans.items(), 
+    sorted_fans = OrderedDict(sorted(fans.items(),
                                   key=lambda kv: kv[1]['likes'], reverse=True))
     return render(request, 'index.html', {'me': me, 'fans' : sorted_fans})
