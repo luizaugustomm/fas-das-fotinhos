@@ -7,7 +7,7 @@ DEBUG = False
 if DEBUG:
     redirect_uri = '127.0.0.1:8080/auth_done'
 else:
-    redirect_uri = 'fas-das-fotinhas.herokuapp.com/auth_done'
+    redirect_uri = 'http://fas-das-fotinhas.herokuapp.com/auth_done'
 
 
 def auth(request):
