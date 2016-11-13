@@ -4,7 +4,6 @@ from fas_das_fotinhas.client import Client
 
 import requests
 
-
 DEBUG = False
 if DEBUG:
     redirect_uri = '127.0.0.1:8080/auth_done'
