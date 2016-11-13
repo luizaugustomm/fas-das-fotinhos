@@ -1,5 +1,6 @@
 
 import requests
+import logging
 
 class Client():
     def __init__(self, client_id, client_secret, redirect_uri):
@@ -20,6 +21,7 @@ class Client():
                                   'code': code})
         response = r.json()
         self.access_token = response.get('access_token')
+        logging.info('Token: {}'.format(self.access_token))
         return self.access_token
 
     def revoke_access(self):
@@ -30,22 +32,26 @@ class Client():
         url = 'https://api.instagram.com/v1/users/self/?access_token={}'
         r = requests.get(url.format(self.access_token))
         response = r.json()
+        logging.info(str(response.get('data')))
         return response.get('data')
 
     def get_user(self, user_id):
         url = 'https://api.instagram.com/v1/users/{}/?access_token={}'
         r = requests.get(url.format(user_id, self.access_token))
         response = r.json()
+        logging.info(str(response.get('data')))
         return response.get('data')
 
     def get_recent_medias(self, count=15):
         url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token={}&count={}'
         r = requests.get(url.format(self.access_token, count))
         response = r.json()
+        logging.info(str(response.get('data')))
         return response.get('data')
 
     def get_media_likes(self, media_id):
         url = 'https://api.instagram.com/v1/media/{}/likes?access_token={}'
         r = requests.get(url.format(media_id, self.access_token))
         response = r.json()
+        logging.info(str(response.get('data')))
         return response.get('data')
