@@ -3,7 +3,7 @@ from fas_das_fotinhas.settings import DEBUG, CLIENT_ID, CLIENT_SECRET
 
 import requests
 
-DEBUG = True
+DEBUG = False
 if DEBUG:
     redirect_uri = '127.0.0.1:8080/auth_done'
 else:
