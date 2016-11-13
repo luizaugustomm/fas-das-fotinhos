@@ -1,5 +1,4 @@
 Django==1.9.2
 gunicorn==19.4.5
-pkg-resources==0.0.0
 requests==2.11.1
 whitenoise==2.0.6
