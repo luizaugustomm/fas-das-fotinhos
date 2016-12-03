@@ -5,7 +5,6 @@ from fas_das_fotinhas.instagram import Client
 
 import requests
 
-DEBUG = True
 if DEBUG:
     redirect_uri = '127.0.0.1:8080/auth_done'
 else:
