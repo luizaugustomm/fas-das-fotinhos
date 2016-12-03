@@ -1,1 +1,1 @@
-web: gunicorn -b localhost:8080 fas_das_fotinhas.wsgi --log-file -
+web: gunicorn -b 127.0.0.1:8080 fas_das_fotinhas.wsgi --log-file -

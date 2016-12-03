@@ -1,4 +1,3 @@
-from collections import OrderedDict
 
 from django.shortcuts import render, redirect
 from fas_das_fotinhas.settings import DEBUG, CLIENT_ID, CLIENT_SECRET
@@ -6,7 +5,7 @@ from fas_das_fotinhas.instagram import Client
 
 import requests
 
-DEBUG = False
+DEBUG = True
 if DEBUG:
     redirect_uri = '127.0.0.1:8080/auth_done'
 else:
@@ -34,21 +33,24 @@ def logout(request):
 def index(request):
     if 'access_token' not in request.session:
         return redirect('auth')
+    client.allow_access(request.session.get('access_token'))
     me = client.get_me()
     medias = client.get_recent_medias()
     fans = {}
     for media in medias:
         likes = client.get_media_likes(media.get('id'))
         for like in likes:
-            if like.get('username') not in fans:
-                fans['username'] = {
+            username = like.get('username')
+            if username not in fans:
+                fans[username] = {
                     'id': like.get('id'),
-                    'first_name': like.get('first_name'),
-                    'last_name': like.get('last_name'),
+                    'full_name' : like.get('full_name'),
+                    'profile_picture' : like.get('profile_picture'),
                     'likes': 1
                 }
             else:
-                fans['username']['likes'] += 1
-    sorted_fans = OrderedDict(sorted(fans.items(),
-                                  key=lambda kv: kv[1]['likes'], reverse=True))
-    return render(request, 'index.html', {'me': me, 'fans' : sorted_fans})
+                fans[username]['likes'] += 1
+    return render(request, 'index.html', {'me': me, 'fans' : sorted(fans.items(), key=lambda x: x[1]['likes'], reverse=True)})
+
+def privacy(request):
+    return render(request, 'privacy-policy.html')

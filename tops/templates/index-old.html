@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fãs das fotinhas - Home</title>
+  {% load static %}
+
+  <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="fullbox">
+    <div class="headerbox">
+      <div class="headerbox-item">
+        <img src="{{ me.profile_picture }}" alt="me" class="profile_picture">
+      </div>
+      <div class="headerbox-item">
+        <p class="full_name">
+          {{ me.full_name }}
+        </p>
+      </div>
+    </div>
+    <div class="fansbox">
+      <div class="fansbox-item">
+        <p>
+          Seus fãs
+        </p>
+      </div>
+      <div class="fansbox-item">
+        <ol>
+          {% for username, data in fans %}
+          <li>{{ username }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

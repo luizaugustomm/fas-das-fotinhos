@@ -22,6 +22,10 @@ class Client():
         self.access_token = response.get('access_token')
         return self.access_token
 
+    def allow_access(self, access_token):
+        assert access_token != None
+        self.access_token = access_token
+
     def revoke_access(self):
         if self.access_token:
             self.access_token = None
@@ -38,7 +42,7 @@ class Client():
         response = r.json()
         return response.get('data')
 
-    def get_recent_medias(self, count=15):
+    def get_recent_medias(self, count=5):
         url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token={}&count={}'
         r = requests.get(url.format(self.access_token, count))
         response = r.json()

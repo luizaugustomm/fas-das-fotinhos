@@ -1,0 +1,32 @@
+
+.fullbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.headerbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fansbox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.profile_picture {
+  height: 65px;
+  width: 65px;
+  border-radius: 100%;
+}
+
+.full_name {
+  font-family: 'Old Standard TT', serif;
+  font-weight: bold;
+  font-size: 36px;
+}

@@ -1,12 +1,45 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Fãs das fotinhas - Autorização</title>
-  </head>
-  <body>
-    <p>
-      <a href="{{ auth_url }}">Clica ni mim pra fazer login</a>
-    </p>
-  </body>
-</html>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block auth_button %}
+  <a class="btn btn-success" href="{{ auth_url }}">Começar</a>
+{% endblock %}
+
+
+{% block profile %}
+  <img class="img-responsive" src="{% static 'img/queen.png' %}" alt="" width="200px", height="200px">
+  <div class="intro-text">
+    <span class="name">Você</span>
+    <hr class="star-light">
+    <span class="skills">1980 seguidores fieis</span>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+  <!-- About Section -->
+  <section id="about">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12 text-center">
+                  <h2>Sobre</h2>
+                  <hr class="star-primary">
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-4 col-lg-offset-2">
+                  <p><em>Fãs das fotinhas</em> é um site no qual você pode ver quem são as pessoas que mais curtem suas fotos no Instagram.</p>
+                  <p>Para saber quem são seus fãs, você só precisa clicar em "Começar!" abaixo.</p>
+              </div>
+              <div class="col-lg-4">
+                  <p>Ao começar, você nos dará permissão para acessar as informações de suas postagens. Mas fique tranquilo(a), não teremos acesso a seu login ou senha. É tudo realizado pelo próprio Instagram!</p>
+              </div>
+              <div class="col-lg-8 col-lg-offset-2 text-center">
+                  <br>
+                  <a href="{{ auth_url }}" class="btn btn-lg btn-success">Começar!</a>
+              </div>
+          </div>
+      </div>
+  </section>
+{% endblock %}
