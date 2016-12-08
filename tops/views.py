@@ -1,14 +1,14 @@
 
 from django.shortcuts import render, redirect
-from fas_das_fotinhas.settings import DEBUG, CLIENT_ID, CLIENT_SECRET
-from fas_das_fotinhas.instagram import Client
+from fas_das_fotinhos.settings import DEBUG, CLIENT_ID, CLIENT_SECRET
+from fas_das_fotinhos.instagram import Client
 
 import requests
 
 if DEBUG:
     redirect_uri = '127.0.0.1:8080/auth_done'
 else:
-    redirect_uri = 'http://fas-das-fotinhas.herokuapp.com/auth_done'
+    redirect_uri = 'http://fas-das-fotinhos.herokuapp.com/auth_done'
 
 
 client = Client(CLIENT_ID, CLIENT_SECRET, redirect_uri)

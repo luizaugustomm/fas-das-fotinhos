@@ -1,1 +1,1 @@
-web: gunicorn fas_das_fotinhas.wsgi --log-file -
+web: gunicorn fas_das_fotinhos.wsgi --log-file -

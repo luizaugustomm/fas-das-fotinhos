@@ -1,5 +1,5 @@
 """
-WSGI config for fas_das_fotinhas project.
+WSGI config for fas_das_fotinhos project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fas_das_fotinhas.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fas_das_fotinhos.settings")
 
 from django.core.wsgi import get_wsgi_application
 from whitenoise.django import DjangoWhiteNoise

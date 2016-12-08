@@ -1,5 +1,5 @@
 """
-Django settings for fas_das_fotinhas project, on Heroku. For more info, see:
+Django settings for fas_das_fotinhos project, on Heroku. For more info, see:
 https://github.com/heroku/heroku-django-template
 
 For more information on this file, see
@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'fas_das_fotinhas.urls'
+ROOT_URLCONF = 'fas_das_fotinhos.urls'
 
 TEMPLATES = [
     {
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'fas_das_fotinhas.wsgi.application'
+WSGI_APPLICATION = 'fas_das_fotinhos.wsgi.application'
 
 
 # Database
