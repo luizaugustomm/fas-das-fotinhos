@@ -42,7 +42,7 @@ class Client():
         response = r.json()
         return response.get('data')
 
-    def get_recent_medias(self, count=5):
+    def get_recent_medias(self, count=100):
         url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token={}&count={}'
         r = requests.get(url.format(self.access_token, count))
         response = r.json()
