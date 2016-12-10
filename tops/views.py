@@ -49,7 +49,10 @@ def index(request):
                 }
             else:
                 fans[username]['likes'] += 1
-    return render(request, 'index.html', {'me': me, 'fans' : sorted(fans.items(), key=lambda x: x[1]['likes'], reverse=True)})
+    fans = sorted(fans.items(), key=lambda x: x[1]['likes'], reverse=True)[:100]
+    for username, data in fans:
+        data['like_percent'] = data.get('likes') / 50.0 * 100
+    return render(request, 'index.html', {'me': me, 'fans' : fans})
 
 def privacy(request):
     return render(request, 'privacy-policy.html')

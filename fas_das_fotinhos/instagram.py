@@ -42,11 +42,20 @@ class Client():
         response = r.json()
         return response.get('data')
 
-    def get_recent_medias(self, count=100):
+    def get_recent_medias(self, count=50):
         url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token={}&count={}'
         r = requests.get(url.format(self.access_token, count))
         response = r.json()
-        return response.get('data')
+        data = response.get('data')
+        while len(data) < count:
+            pagination = response.get('pagination')
+            if not pagination:
+                break
+            next_url = pagination.get('next_url')
+            r = requests.get(next_url)
+            response = r.json()
+            data.extend(response.get('data'))
+        return data[:50]
 
     def get_media_likes(self, media_id):
         url = 'https://api.instagram.com/v1/media/{}/likes?access_token={}'

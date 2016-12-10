@@ -26,7 +26,7 @@ CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Cookie-based sessions
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'

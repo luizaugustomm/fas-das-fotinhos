@@ -15,6 +15,10 @@
     <hr class="star-light">
     <span class="skills">{{ me.counts.followed_by }} seguidores fieis</span>
   </div>
+  <div class="visible-xs">
+    <br>
+    <a class="btn btn-warning" href="logout">Sair</a>
+  </div>
 {% endblock %}
 
 
@@ -32,9 +36,9 @@
           <div class="row">
             <div class="col-md-1 col-xs-2 col-md-offset-3">
               <img class="img-circle" height="35px" width="35px" src="{{ data.profile_picture }}" alt="Fan" />
-              <span class="badge badge-success pull-right">{{ forloop.counter }}</span>
+              <span class="badge pull-right">{{ forloop.counter }}</span>
             </div>
-            <div class="col-md-4 col-xs-6">
+            <div class="col-md-3 col-xs-6">
               <span class="lead text-left">
                 {% if data.full_name != '' %}
                   {{ data.full_name }}
@@ -43,9 +47,9 @@
                 {% endif %}
               </span>
             </div>
-            <div class="col-md-2 col-xs-3">
+            <div class="col-md-3 col-xs-3">
               <span class="glyphicon glyphicon-heart" style="color: #FF111D" aria-hidden="true"></span>
-              <span class="lead text-left">{{ data.likes }}</span>
+              <span class="lead text-left">{{ data.like_percent | floatformat:-1 }}%</span>
             </div>
           </div>
           <br>
