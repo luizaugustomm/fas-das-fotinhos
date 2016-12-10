@@ -30,13 +30,25 @@
           </div>
           {% for username, data in fans %}
           <div class="row">
-            <div class="col-md-1 col-xs-2 col-md-offset-4">
+            <div class="col-md-1 col-xs-2 col-md-offset-3">
               <img class="img-circle" height="35px" width="35px" src="{{ data.profile_picture }}" alt="Fan" />
+              <span class="badge badge-success pull-right">{{ forloop.counter }}</span>
             </div>
-            <div class="col-md-4 col-xs-8">
-              <span class="lead text-left">{{ data.full_name }}</span>
+            <div class="col-md-4 col-xs-6">
+              <span class="lead text-left">
+                {% if data.full_name != '' %}
+                  {{ data.full_name }}
+                {% else %}
+                  {{ username }}
+                {% endif %}
+              </span>
+            </div>
+            <div class="col-md-2 col-xs-2">
+              <span class="glyphicon glyphicon-heart" style="color: #FF111D" aria-hidden="true"></span>
+              <span class="lead text-left">{{ data.likes }}</span>
             </div>
           </div>
+          <br>
           {% endfor %}
       </div>
   </section>
